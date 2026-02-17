@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="basic_snippet_template" name="Basic Snippet">
+        <section class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Basic Snippet</h1>
+                    <p>This is a basic snippet used to demonstrate snippet functionality in Odoo 18.</p>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="basic_snippet_banner" inherit_id="website.snippets"
+              name="Snippet banner">
+        <xpath expr="//snippets[@id='snippet_groups']"
+               position="inside">
+            <t t-snippet="website_snippet.basic_snippet_template"
+               t-thumbnail="/website_snippet/static/src/images/snippets/banner.jpg"/>
+        </xpath>
+    </template>
+</odoo>

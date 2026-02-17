@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- this is how create new category in odoo18 -->
+    <record model="ir.module.category" id="module_category_college_erp">
+            <field name="name">College ERP</field>
+            <field name="description"> Category for College ERP</field>
+    </record>
+
+    <!-- this is how create new group -->
+    <record id="group_college_erp_teacher" model="res.groups">
+        <field name="name">Teacher</field>
+        <field name="category_id" ref="module_category_college_erp"/>
+    </record>
+    <record id="group_college_erp_principal" model="res.groups">
+        <field name="name">Principal</field>
+        <field name="category_id" ref="module_category_college_erp"/>
+        <field name="implied_ids" eval="[(4, ref('group_college_erp_teacher'))]"/>
+    </record>
+</odoo>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- form view -->
+     <record id="college_teacher_view_form" model="ir.ui.view">
+        <field name="name">college.teacher.view.form</field>
+        <field name="model">college.teacher</field>
+        <field name="arch" type="xml">
+            <form >
+                <sheet>
+                    <field name="image_1920" widget="image" class="oe_avatar" />
+                    <group>
+                        <group>
+                        <field name="teacher_name" />
+                        <field name="teacher_code" />
+                        <field name="teacher_email" />
+                        <field name="teacher_phone"/>
+                        <field name="teacher_joining_date"/>
+                    </group>
+                    <group>
+                            <span class="o_form_label o_td_label o_address_type fw-bold" >Permanent Address</span>
+                            <br />
+                            <div class="o_address_format" >
+                                <field name="street" placeholder="Street..." class="o_address_street" />
+                                <field name="street2" placeholder="Street 2..." class="o_address_street" />
+                                <field name="city" placeholder="City" class="o_address_city" />
+                                <field name="state_id" class="o_address_state" placeholder="State" />
+                                <field name="zip" placeholder="ZIP" class="o_address_zip" />
+                                <field name="country_id"  placeholder="Country" />
+                            </div>
+                    </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+     </record>
+    
+         <!-- List View -->
+    <record id="college_teacher_view_list" model="ir.ui.view">
+        <field name="name">college.teacher.view.list</field>
+        <field name="model">college.teacher</field>
+        <field name="arch" type="xml">
+            <list string="Teachers">
+                <field name="teacher_code"/>
+                <field name="teacher_name"/>
+                <field name="teacher_email"/>
+                <field name="teacher_phone"/>
+                <field name="teacher_joining_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="college_teacher_view_kanban" model="ir.ui.view">
+        <field name="name">college.teacher.view.kanban</field>
+        <field name="model">college.teacher</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="teacher_name"/>
+                <field name="teacher_code"/>
+                <field name="teacher_email"/>
+                <field name="teacher_phone"/>
+                <field name="image_1920"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record">
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('college.teacher', 'image_1920', record.id.value)"
+                                     class="oe_kanban_avatar"/>
+                            </div>
+                            <div class="o_kanban_details">
+                                <strong>
+                                    <field name="teacher_name"/>
+                                </strong>
+                                <div>
+                                    Code: <field name="teacher_code"/>
+                                </div>
+                                <div>
+                                    Email: <field name="teacher_email"/>
+                                </div>
+                                <div>
+                                    Phone: <field name="teacher_phone"/>
+                                </div>
+                                <div>
+                                    Joining Date: <field name="teacher_joining_date"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="action_college_erp_teacher" model="ir.actions.act_window">
+        <field name="name">College ERP</field>
+        <field name="res_model">college.teacher</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Teacher
+            </p>
+        </field>
+    </record>
+</odoo>

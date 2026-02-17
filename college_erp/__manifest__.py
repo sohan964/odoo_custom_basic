@@ -1,0 +1,23 @@
+{
+    'name': 'College ERP',
+    'version': "18.0.1.0.0",
+    'license': "LGPL-3",
+    'summary': """An ERP for collge""",
+    'description': """An ERP for collge to manage the overall collage""",
+    'author': "Sohan",
+    'website':"https://developer-sohanur.web.app/",
+    'category': "Education",
+    'maintainer': "Betopia Group ltd",
+    'sequence': 1,
+    'data':[
+        'security/college_erp_security.xml',
+        'security/ir.model.access.csv',
+        'views/college_teacher_views.xml',
+        'views/college_student_views.xml',
+        'views/college_erp_menus.xml',
+    ],
+    'depends': [],
+    'application': True,
+    'installable': True,
+    'auto_install': False,
+}
