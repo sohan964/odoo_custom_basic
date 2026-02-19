@@ -8,4 +8,4 @@ class HospitalPatient(models.Model):
 
     name = fields.Char(string="Name", required=True, tracking=True)
     date_of_birth = fields.Date(string="DOB", required=True, tracking=True)
-    gender = fields.Selection([('male', "Male"), ('female', 'Female')], string="Gender", tracking=True)
+    gender = fields.Selection([('male', "Male"), ('female', 'Female')], string="Gender", tracking=True) 
