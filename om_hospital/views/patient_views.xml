@@ -22,6 +22,8 @@
                         <field name="name" />
                         <field name="date_of_birth" />
                         <field name="gender"  widget="radio" />
+                        <field name="tag_ids" widget="many2many_tags"/>
+                       
                     </group>
                 </sheet>
                 <chatter />
