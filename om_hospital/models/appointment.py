@@ -6,7 +6,7 @@ class HospitalAppointment(models.Model):
     _description = "Appointment Master"
     _inherit = ['mail.thread']
     _rec_name = "patient_id" #this for show the name in the appointment route
-    
+    _rec_names_search = ['reference', 'patient_id'] #this one help to search by the field name added
 
     reference = fields.Char(string="Reference", default="New")
     patient_id = fields.Many2one('hospital.patient', string="patient") # make link to the patient table and hold 1 value
@@ -20,9 +20,13 @@ class HospitalAppointment(models.Model):
         ('done', 'Done'),
         ('cancel', 'Cancelled')
     ], default="draft", tracking=True)
+
+    #create One2many field
+    appointment_line_ids = fields.One2many('hospital.appointment.line', 'appointment_id', string="Lines")
+
     #23.10
     #inheriting the create method to connect the reference field with sequence
-    @api.model_create_multi 
+    @api.model_create_multi # it will generate the sequence number of appointment
     def create(self, vals_list):
         print("odoo", vals_list)
         for vals in vals_list:
@@ -45,3 +49,17 @@ class HospitalAppointment(models.Model):
     def action_cancel(self):
         for rec in self:
             rec.state = 'cancel'
+
+    def _compute_display_name(self): #this function will show the display name with reference
+        for rec in self:
+            rec.display_name = f"[{rec.reference}] {rec.patient_id.name}"
+
+#part of odoo17 no 6 video
+class HospitalAppointmentLine(models.Model):
+    _name="hospital.appointment.line"
+    _description = "Appointment Master Line"
+
+    appointment_id = fields.Many2one("hospital.appointment",string="Appointment Line")
+    product_id = fields.Many2one("product.product", string="products")
+    qty = fields.Float(string="Quantity")
+

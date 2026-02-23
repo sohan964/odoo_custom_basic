@@ -31,6 +31,17 @@
                         <field name="date_appointment"/>
                         <field name="note" />
                     </group>
+                    <!-- this is the for the one2many -->
+                    <notebook>
+                        <page name="appointment_line" string="Lines">
+                            <field name="appointment_line_ids">
+                                <list editable="top">
+                                    <field name="product_id" />
+                                    <field name="qty" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
                 <chatter />
             </form>
