@@ -26,11 +26,18 @@
                 </header>
                 <sheet>
                     <group>
-                        <field name="reference" readonly="True"/>
-                        <field name="patient_id" />
-                        <field name="date_appointment"/>
-                        <field name="note" />
+                        <group>
+                            <field name="reference" readonly="True"/>
+                            <field name="patient_id" />
+                            <field name="date_appointment"/>
+                            <field name="date_of_birth" /> <!-- it is a related field of patient-->
+                            <field name="note" />
+                        </group>
+                        <group>
+                            <field name="total_qty" />
+                        </group>
                     </group>
+                    
                     <!-- this is the for the one2many -->
                     <notebook>
                         <page name="appointment_line" string="Lines">

@@ -16,7 +16,7 @@
         'views/college_student_views.xml',
         'views/college_erp_menus.xml',
     ],
-    'depends': [],
+    'depends': ['contacts'],
     'application': True,
     'installable': True,
     'auto_install': False,
