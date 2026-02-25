@@ -9,7 +9,7 @@ class HospitalAppointment(models.Model):
     _rec_names_search = ['reference', 'patient_id'] #this one help to search by the field name added
 
     reference = fields.Char(string="Reference", default="New") #ondelete restrict about delete the person
-    patient_id = fields.Many2one('hospital.patient', string="patient", ondelete="restrict") # make link to the patient table and hold 1 value 
+    patient_id = fields.Many2one('hospital.patient', string="patient", ondelete="restrict") # make link(fk) to the patient table and hold 1 value 
     date_appointment = fields.Date(string="Appointment Date")
     date_of_birth = fields.Date(string="DOB", related="patient_id.date_of_birth")
     note = fields.Text(string="Note")

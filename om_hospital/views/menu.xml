@@ -10,10 +10,26 @@
      <menuitem id="menu_appointments" name="Appointments" parent="menu_frontdesk" action="action_hospital_appointment" />
      <menuitem id="menu_appointment_line" name="Appointment Lines" parent="menu_frontdesk" action="action_hospital_appointment_line" />
 
+    <!-- inheriting contact module -->
+     <menuitem id="menu_billing"
+                name="Billing"
+                parent="menu_hospital_root"/>
+    <!-- submenu with action -->
+     <menuitem id="menu_hms_invoicing"
+                name="Invoice"
+                action="account.action_move_out_invoice"
+                parent="menu_billing"/>
+
+    <menuitem id="menu_hms_payment"
+                name="Payment"
+                action="account.action_account_payments"
+                parent="menu_billing"/>
+
     <!-- submenu -->
-     <menuitem id="menu_configuration" name="Configuration" parent="menu_hospital_root"/>
+     <menuitem id="menu_configuration" name="Configuration" 
+     parent="menu_hospital_root" groups="om_hospital.group_hospital_doctors"
+     />
      <!-- submenu witha action -->
       <menuitem id="menu_patient_tag" name="Tags" parent="menu_configuration" action="action_patient_tag" />
-    
 </odoo>
  

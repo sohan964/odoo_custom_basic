@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Security In Odoo | Odoo User Groups | Odoo Record Rules | Odoo Access Right | Video 17 -->
 <odoo>
     <!-- create category -->
     <record id="module_category_hospital" model="ir.module.category" >
@@ -17,5 +18,21 @@
         <field name="category_id" ref="om_hospital.module_category_hospital"/>
         <field name="implied_ids" eval="[(4, ref('om_hospital.group_hospital_receptionist'))]" /> <!-- inheriting the receptionist group-->
         <field name="comment">this user will have access to patient details</field>
+    </record>
+
+    <!-- to see only thing that I created and no one else for this need to implement record rules -->
+    <record id="receptionist_own_appointment_rule" model="ir.rule">
+        <field name="name">receptionist: view own records</field>
+        <field name="model_id" ref="model_hospital_appointment"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field> <!-- here is the logic-->
+        <field name="groups" eval="[Command.set([ref('om_hospital.group_hospital_receptionist')])]"/>
+    </record>
+
+    <!-- this is for doctor, doctor can see all the record -->
+     <record id="doctor_see_all_appointment_rule" model="ir.rule">
+        <field name="name">Doctor: view all records</field>
+        <field name="model_id" ref="model_hospital_appointment"/>
+        <field name="domain_force">[]</field> <!-- here is the logic-->
+        <field name="groups" eval="[Command.set([ref('om_hospital.group_hospital_doctors')])]"/>
     </record>
 </odoo>

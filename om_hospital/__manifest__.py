@@ -18,7 +18,8 @@
     'depends':[
         'base',
         'mail',
-        'product'
+        'product',
+        'account'
        
     ],
     'application': True,
