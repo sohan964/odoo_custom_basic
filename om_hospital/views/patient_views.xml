@@ -23,7 +23,9 @@
                         <field name="date_of_birth" />
                         <field name="gender"  widget="radio" />
                         <field name="tag_ids" widget="many2many_tags"/>
-                       
+                        <field name="is_minor" widget="boolean_toggle" />
+                        <field name="gaurdian" invisible="not is_minor"/>
+
                     </group>
                 </sheet>
                 <chatter />

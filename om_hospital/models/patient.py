@@ -11,6 +11,9 @@ class HospitalPatient(models.Model):
     date_of_birth = fields.Date(string="DOB", required=True, tracking=True)
     gender = fields.Selection([('male', "Male"), ('female', 'Female')], string="Gender", tracking=True)
 
+    is_minor = fields.Boolean(string="Minor")
+    gaurdian = fields.Char(string="Guardian Name")
+
     #this way define many2many fields in odoo
     # model name, hospital.patient and patient.tag link table(will auto generate), patient_id column, tag_id, column
     tag_ids = fields.Many2many('patient.tag', 'patient_tag_rel', 'patient_id', 'tag_id', string="Tags")
